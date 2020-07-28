@@ -13,7 +13,7 @@ class RetrofitClient private constructor() {
         private fun getRetrofitInstance(): Retrofit {
             val httpClient = OkHttpClient.Builder()
 
-            if (::retrofit.isInitialized) {
+            if (!::retrofit.isInitialized) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .client(httpClient.build())
@@ -24,7 +24,7 @@ class RetrofitClient private constructor() {
             return retrofit
         }
 
-        fun createService(serviceClass: Class<S>): S {
+        fun <S> createService(serviceClass: Class<S>): S {
             return getRetrofitInstance().create(serviceClass)
         }
 
