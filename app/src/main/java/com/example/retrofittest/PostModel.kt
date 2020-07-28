@@ -3,7 +3,7 @@ package com.example.retrofittest
 import com.google.gson.annotations.SerializedName
 
 class PostModel {
-    
+
     @SerializedName("id")
     var id: Int = 0
 
